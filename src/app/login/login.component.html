@@ -1,0 +1,30 @@
+<div class="card">
+    <form (ngSubmit)="login()" class="form" #userLogin="ngForm">
+        <div class="card-header">
+            {{title}}
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <tbody>
+                        
+                        <tr>
+                            <td><label>Email</label></td>
+                          <td><input type="email" name="email" [(ngModel)]="loginUserDetails.email" #email="ngModel" [class.is-invalid]="email.invalid && email.touched" class="form-control rounded-0" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required></td>
+                          <td><small class="text-danger" [class.d-none]="email.valid || email.touched">Enter valid email</small></td>
+                        </tr>
+                        <tr>
+                            <td><label>Password</label></td>
+                          <td><input type="password" name="password" [(ngModel)]="loginUserDetails.password" #password="ngModel" [class.is-invalid]="password.invalid && password.touched" class="form-control rounded-0" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,15}$" required></td>
+                          <td><small class="text-danger" [class.d-none]="password.valid || password.touched">Password must contain an uppercase,a lowercase,a digit and minimum 8 characters</small></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><button type="submit" [disabled]="userLogin.form.invalid" class="btn btn-primary">Login</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+</div>
